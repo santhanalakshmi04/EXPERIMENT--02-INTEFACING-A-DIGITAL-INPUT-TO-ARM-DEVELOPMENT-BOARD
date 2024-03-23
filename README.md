@@ -51,13 +51,48 @@ The full form of an ARM is an advanced reduced instruction set computer (RISC) m
 
 
 ## STM 32 CUBE PROGRAM :
+```
+#include "main.h"
+#include "stdbool.h"
+bool pushbutton;
 
+void SystemColck_Config(void);
+static void MX_GPIO_Init(void);
 
+int main(void)
+{
+ HAL_Int();
+ SystemClock_Config();
+ MX_GPIO_Init();
+
+while (1)
+  {
+    pushbutton=HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_13);
+    if(pushbutton==0)
+    {
+    	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+    	HAL_Delay(2000);
+    	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+    	HAL_Delay(2000);
+    }
+    else
+    {
+    	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+    	HAL_Delay(2000);
+    }
+  }
+
+```
+
+![image](https://github.com/santhanalakshmi04/EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD/assets/119475762/176ae321-e529-4235-a7a7-32b4c7a2ead7)
 
 ## Output  :
+### BEFORE : 
  
- 
- 
- 
+![image](https://github.com/santhanalakshmi04/EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD/assets/119475762/42176b45-9520-403e-abe0-95b8e2775653)
+
+ ### AFTER :
+ ![image](https://github.com/santhanalakshmi04/EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD/assets/119475762/365225d1-f50a-4945-8d99-b69e6e2526d9)
+
 ## Result :
 Interfacing a digital Input (Pushbutton ) with ARM microcontroller based IOT development is executed and the results are verified.
